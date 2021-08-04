@@ -8,13 +8,12 @@ const Rooms = () => {
   return (
     <>
       <Hero hero="roomsHero">
-        <Banner title="Our Room">
+        <Banner title="our rooms">
           <Link to="/" className="btn-primary">
-            Return Home
+            return home
           </Link>
         </Banner>
       </Hero>
-
       <RoomContainer />
     </>
   );
