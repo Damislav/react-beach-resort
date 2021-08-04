@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import items from "./data";
+import items from "../data";
 const RoomContext = React.createContext();
 // access to provider and consumer
 class RoomProvider extends Component {

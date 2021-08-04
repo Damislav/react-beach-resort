@@ -1,9 +1,13 @@
 import React from "react";
-import Hero from "../components/Hero";
+import Hero from "../components/Main/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import Services from "../components/Services";
-import FeaturedRooms from "../components/FeaturedRooms";
+import FeaturedRooms from "../components/Room/FeaturedRooms";
+
+Hero.defaultProps = {
+  hero: "defaultProps",
+};
 
 function Home() {
   return (
@@ -20,13 +24,8 @@ function Home() {
       </Hero>
       <Services />
       <FeaturedRooms />
-
     </>
   );
 }
-
-Hero.defaultProps = {
-  hero: "defaultProps",
-};
 
 export default Home;
