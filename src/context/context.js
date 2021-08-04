@@ -8,7 +8,7 @@ class RoomProvider extends Component {
     sortedRooms: [],
     featuredRooms: [],
     loading: true,
-    type: "all",
+    type: "single",
     capacity: 1,
     price: 0,
     minPrice: 0,
@@ -56,16 +56,72 @@ class RoomProvider extends Component {
     return room;
   };
 
+  handleChange = (event) => {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = event.target.name;
+    this.setState(
+      {
+        [name]: value,
+      },
+      this.filterRooms
+    );
+  };
   filterRooms = () => {
-    console.log("hello");
+    // ¸destracture from state
+    let { rooms, type, capacity, price, pets, minSize, maxSize, breakfast } =
+      this.state;
+    // şpread rooms from state
+    let tempRooms = [...rooms];
+    // transform values
+
+    capacity = parseInt(capacity);
+    price = parseInt(price);
+    // ¸filter by type
+    if (type !== "all") {
+      // ¸get all rooms that have same type as type in state
+      tempRooms = tempRooms.filter((room) => {
+        return room.type === type;
+      });
+
+      // ¸filter by capacity
+      if (capacity !== 1) {
+        tempRooms = tempRooms.filter((room) => {
+          return room.capacity >= capacity;
+        });
+      }
+      // ¸filter by price
+
+      tempRooms = tempRooms.filter((room) => {
+        return room.price < price;
+      });
+      // ¸filter by breakfast
+      if (breakfast) {
+        tempRooms = tempRooms.filter((room) => {
+          return room.breakfast === breakfast;
+        });
+      }
+
+      // ¸filter by pets
+      if (pets) {
+        tempRooms = tempRooms.filter((room) => {
+          return room.pets === pets;
+        });
+      }
+      // ¸filter by size
+      tempRooms = tempRooms.filter((room) => {
+        // ¸get room size that is higher then min size and lower then max size
+        return room.size >= minSize && room.size <= maxSize;
+      });
+
+      // çhange state
+      this.setState({
+        //  	 set sorted rooms as temp rooms
+        sortedRooms: tempRooms,
+      });
+    }
   };
 
-  handleChange = (event) => {
-    const type = event.target.type;
-    const name = event.target.name;
-    const value = event.target.value;
-    console.log(name, type, value);
-  };
   render() {
     return (
       <RoomContext.Provider
