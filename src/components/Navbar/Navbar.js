@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import { FaAlignRight } from "react-icons/fa";
+import "./Navbar.css";
 export default class Navbar extends Component {
   state = {
     isOpen: false,
@@ -35,6 +36,13 @@ export default class Navbar extends Component {
             </li>
             <li>
               <Link to="/rooms">Rooms</Link>
+            </li>
+
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </div>

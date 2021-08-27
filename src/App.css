@@ -99,6 +99,7 @@ h6 {
 }
 .nav-header {
   display: flex;
+  flex: 1;
   justify-content: space-between;
 }
 .nav-btn {
@@ -133,7 +134,7 @@ h6 {
 }
 
 .show-nav {
-  height: 100px;
+  height: 100%;
 }
 @media screen and (min-width: 768px) {
   .nav-btn {
